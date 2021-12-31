@@ -6,7 +6,7 @@ const products = [
     {id: 3, title: 'light', price: 140},
 ];
 
-const renderProduct = (title, price) => {
+const renderProduct = (title = "Не доступно", price = 0) => {
     return `<div class="product-item">
                 <h3>${title}</h3>
                 <p>${price}</p>
@@ -15,8 +15,7 @@ const renderProduct = (title, price) => {
 };
 
 const renderCatalog = (list) => {
-    const listProduct = list.map(item => renderProduct(item.title, item.price));
-    document.querySelector('.products').innerHTML = listProduct;
+    document.querySelector('.products').innerHTML = list.map(item => renderProduct(item.title, item.price)).join('');
 };
 
 renderCatalog(products);
